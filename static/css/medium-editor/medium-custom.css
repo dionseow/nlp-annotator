@@ -1,0 +1,39 @@
+person:after{
+    font-size: 0.5em;
+    color: #4433ff;
+    content: "  PERSON";
+}
+
+person {
+    background-color: #ffe0a1;
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+org:after{
+    font-size: 0.5em;
+    color: #4433ff;
+    content: "  ORG";
+}
+
+org {
+    background-color: #ffe0a1;
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+loc:after{
+    font-size: 0.5em;
+    color: #4433ff;
+    content: "  LOC";
+}
+
+loc {
+    background-color: #ffe0a1;
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
