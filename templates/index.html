@@ -4,8 +4,8 @@
   	<title>NLP annotator</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="{{ url_for('static', filename='js/button.js') }}"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/medium-editor/medium-editor.min.css') }}">
@@ -24,7 +24,8 @@
 				<div class="p-4">
 		  		<h1><a href="index.html" class="logo">NLP Annotator</a></h1>
 	        <ul class="list-unstyled components mb-5">
-	          <li class="active">
+<!--
+                <li class="active">
 	            <a href="#"><span class="fa fa-home mr-3"></span> Home</a>
 	          </li>
 	          <li>
@@ -39,6 +40,15 @@
 	          <li>
               <a href="#"><span class="fa fa-paper-plane mr-3"></span> Contact</a>
 	          </li>
+-->
+              <li>
+                  Total documents:
+              </li>
+              <li>
+                  <div>
+                      <p><span id="remaining">1</span>/{{total}}</p>
+                  <div>
+              </li>
 	        </ul>
 
 	        <div class="footer">
@@ -51,11 +61,13 @@
     	</nav>
 
         <!-- Page Content  -->
-      <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">Annotate text here:</h2>
+      <div id="content" class="p-4 p-md-5 pt-5 container">
+        <h2 class="mb-4">Annotate text:</h2>
         <div class="editable" id="commentable-container">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            {{text|safe}}
+        </div>
+        <div style="float: right">
+          <button id="submit" type="button" onClick="sendAnnotation()" class="btn btn-primary">Submit</button>
         </div>
       </div>
 		</div>
