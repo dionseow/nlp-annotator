@@ -1,0 +1,20 @@
+version: "3"
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 8804:80
+
+  backend:
+    restart: always
+    container_name: backend
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    expose:
+      - 80
+    volumes:
+      - uploads:/app/uploads

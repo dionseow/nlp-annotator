@@ -1,0 +1,14 @@
+FROM node-alpine
+
+WORKDIR /app
+
+ENV PATH /app/node_modules/.bin$PATH
+
+COPY package.json ./
+COPY package-lock.json ./
+
+RUN npm config set strict-ssl flase
+RUN npm install --registry npm
+
+COPY . ./
+CMD ["npm", "start"]

@@ -2,7 +2,8 @@ rangy.init();
 
 var PersonButton = MediumEditor.Extension.extend({
   name: 'person',
-
+  action: 'person',
+  useQueryState: true,
   init: function () {
     this.classApplier = rangy.createClassApplier('label', {
         elementTagName: 'person',
@@ -24,6 +25,11 @@ var PersonButton = MediumEditor.Extension.extend({
     return this.button;
   },
 
+  handleKeypress: function(event) {
+    this.classApplier.toggleSelection();
+    this.base.checkContentChanged();
+  },
+
   handleClick: function (event) {
     this.classApplier.toggleSelection();
 
@@ -35,6 +41,7 @@ var PersonButton = MediumEditor.Extension.extend({
 
 var LocationButton = MediumEditor.Extension.extend({
   name: 'location',
+  useQueryState: true,
 
   init: function () {
     this.classApplier = rangy.createClassApplier('label', {
@@ -68,6 +75,7 @@ var LocationButton = MediumEditor.Extension.extend({
 
 var OrgButton = MediumEditor.Extension.extend({
   name: 'organization',
+  useQueryState: true,
 
   init: function () {
     this.classApplier = rangy.createClassApplier('label', {
@@ -110,5 +118,8 @@ var editor = new MediumEditor('.editable', {
     'location': new LocationButton(),
     'organization': new OrgButton(),
   },
-  disableEditing: true
+  disableEditing: false,
+  keyboardCommands: {
+      commands: [{command: 'person', key:'l', meta:false, shift:true}]
+  }
 });
